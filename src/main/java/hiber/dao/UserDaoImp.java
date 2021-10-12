@@ -30,7 +30,7 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")// Сделал этот метод возвращающим список, потому что владельцев машин одной и той же марки и модели может быть несколько.
     public List<User> getUserOfCar(String model, String series) {
         Query<Car> query = sessionFactory.getCurrentSession().createQuery("from Car where model = :paramModel and series = :paramSeries");
         query.setParameter("paramModel", model).setParameter("paramSeries", series);
